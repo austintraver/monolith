@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  assemble:
+#    image: austintraver/xv6:latest
+    build:
+      dockerfile: Dockerfile
+      target: monolith
+    image:
+    security_opt:
+      - seccomp:unconfined
+    privileged: true
+    container_name: monolith
+    ports:
+      - "10122:22"
+    working_dir: /root/scratch
+    hostname: monolith
+    domainname: monolith.local
